@@ -1,0 +1,32 @@
+# ASN list for HifzNet geoip:hifznet-direct
+# Russian services with foreign CDN/infrastructure
+# Format: one ASN number per line, comments start with #
+# Updated: 2026-03-22
+
+# Yandex LLC (global CDN, EU peering)
+13238
+200350
+202611
+43247
+44534
+
+# VK / Mail.ru Group (Amsterdam DC, EU transit)
+47764
+47541
+47542
+44295
+28709
+60863
+21051
+
+# Sberbank
+35237
+33844
+47457
+
+# Ozon
+44386
+
+# Wildberries
+57073
+49053
