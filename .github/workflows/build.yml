@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'data/**'
+      - 'asn/**'
   workflow_dispatch:
   schedule:
     - cron: '0 3 * * 1'
@@ -34,9 +35,44 @@ jobs:
           sha256sum geosite.dat > geosite.dat.sha256sum
           ls -lh geosite.dat
 
-      - name: Download geoip.dat from v2fly
+      - name: Fetch IP ranges from RIPE by ASN
         run: |
-          wget -O geoip.dat https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
+          mkdir -p tmp-geoip
+          > tmp-geoip/hifznet-direct.txt
+          while IFS= read -r line; do
+            [[ "$line" =~ ^#.*$ ]] && continue
+            [[ -z "$line" ]] && continue
+            echo "Fetching AS${line}..."
+            curl -s --retry 3 --retry-delay 2 \
+              "https://stat.ripe.net/data/announced-prefixes/data.json?resource=AS${line}" \
+              | python3 -c "import sys,json; [print(p['prefix']) for p in json.load(sys.stdin).get('data',{}).get('prefixes',[])]" \
+              >> tmp-geoip/hifznet-direct.txt 2>/dev/null || true
+            sleep 1
+          done < asn/russian-services.txt
+          sort -u tmp-geoip/hifznet-direct.txt | grep -v "^$" > tmp-geoip/hifznet-direct-clean.txt
+          echo "Total CIDR ranges: $(wc -l < tmp-geoip/hifznet-direct-clean.txt)"
+          cat tmp-geoip/hifznet-direct-clean.txt
+
+      - name: Build geoip.dat with hifznet-direct category
+        run: |
+          git clone https://github.com/v2fly/geoip.git builder-geoip
+          cd builder-geoip && go build -o ../geoip-tool . && cd ..
+          mkdir -p geoip-data output-geoip
+          cp tmp-geoip/hifznet-direct-clean.txt geoip-data/hifznet-direct
+          wget -q -O geoip-country.dat https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
+          cat > geoip-config.json << JSONEOF
+          {
+            "input": [
+              {"type":"v2rayGeoIPDat","action":"add","args":{"uri":"./geoip-country.dat","wantedList":["ru","private"]}},
+              {"type":"text","action":"add","args":{"name":"hifznet-direct","uri":"./geoip-data/hifznet-direct"}}
+            ],
+            "output": [
+              {"type":"v2rayGeoIPDat","action":"output","args":{"outputDir":"./output-geoip","outputName":"geoip.dat"}}
+            ]
+          }
+          JSONEOF
+          ./geoip-tool -c geoip-config.json
+          cp output-geoip/geoip.dat ./geoip.dat
           sha256sum geoip.dat > geoip.dat.sha256sum
           ls -lh geoip.dat
 
@@ -52,8 +88,16 @@ jobs:
             geoip.dat.sha256sum
           body: |
             HifzNet routing files - auto built.
-            geosite.dat: hifznet (RU direct) + hifznet-block (blocked)
-            geoip.dat: v2fly latest (monthly updated)
+
+            **geosite.dat:**
+            - `geosite:hifznet` - Russian domains + foreign RU service infrastructure (direct)
+            - `geosite:hifznet-block` - blocked domains (ads, extremism, torrents)
+
+            **geoip.dat:**
+            - `geoip:ru` - standard Russian IP ranges
+            - `geoip:private` - local/private networks
+            - `geoip:hifznet-direct` - foreign IPs of Yandex/VK/Sber/Ozon/WB by ASN via RIPE
+
             Commit: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
