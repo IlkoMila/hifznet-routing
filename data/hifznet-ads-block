@@ -1,0 +1,61 @@
+# HifzNet Block List - ADS & TRACKERS
+# Ad networks, trackers and analytics platforms
+# Optional - may break some mobile app features (deeplinks, auth)
+# Include only if users want aggressive ad blocking
+
+# ââ ADS & TRACKERS ââââââââââââââââââââââââââââââââââââââââââââ
+# Major ad networks
+doubleclick.net
+googleadservices.com
+googlesyndication.com
+google-analytics.com
+googletagmanager.com
+googletagservices.com
+adnxs.com
+adsystem.amazon.com
+advertising.com
+adtech.com
+openx.net
+pubmatic.com
+rubiconproject.com
+criteo.com
+criteo.net
+moatads.com
+ib.adnxs.com
+adsafeprotected.com
+cdn.doubleverify.com
+casalemedia.com
+contextweb.com
+lijit.com
+servedby.flashtalking.com
+media.net
+outbrain.com
+taboola.com
+revcontent.com
+zergnet.com
+exoclick.com
+trafficjunky.net
+juicyads.com
+# Russian ad networks
+begun.ru
+adriver.ru
+mail.ru.adriver.ru
+imradio.ru
+tns-counter.ru
+rambler.ru.adriver.ru
+# Trackers & analytics
+scorecardresearch.com
+quantserve.com
+chartbeat.com
+mouseflow.com
+fullstory.com
+hotjar.com
+crazyegg.com
+segment.com
+mixpanel.com
+amplitude.com
+appsflyer.com
+adjust.com
+branch.io
+kochava.com
+singular.net
