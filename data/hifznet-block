@@ -1,0 +1,139 @@
+# HifzNet Block List
+# Domains in this file are BLOCKED - users cannot access them even through VPN
+# Categories: extremism, terrorism, ads, trackers, torrents
+
+# ── TERRORISM & EXTREMISM (internationally recognized) ────────
+# ISIS / ISIL / Daesh
+full:isis.com
+full:islamicstate.com
+full:dabiqmagazine.com
+full:rumiyah.press
+# Al-Qaeda network
+full:al-qaeda.net
+full:aqap.org
+full:aljazeeratube.com
+# Taliban
+full:alemarahenglish.net
+full:alemarah.info
+# Hamas (recognized terrorist org in multiple countries)
+full:hamasinfo.net
+full:izz-ad-din.com
+# Hezbollah media
+full:almanar.com.lb
+full:moqawama.org
+# Neo-Nazi / White supremacy (globally condemned)
+full:dailystormer.in
+full:dailystormer.name
+full:stormfront.org
+full:vanguardamerica.com
+full:atomwaffen.com
+full:siege.boo
+# Other internationally banned terrorist media
+full:kavkaz-center.com
+full:kavkazcenter.com
+full:azzam.com
+
+# ── EXTREMISM RECOGNIZED IN RUSSIA ────────────────────────────
+# Hizb ut-Tahrir (запрещена в РФ)
+full:hizb-ut-tahrir.org
+full:hizb.org.uk
+# Tablighi Jamaat related
+full:tablighijamaat.net
+# Right Sector (запрещена в РФ)
+full:pravyysektor.info
+full:right-sector.com
+# Svoboda party propaganda
+full:svoboda.org.ua
+# Jehovah's Witnesses (запрещены в РФ)
+full:jw.org
+full:watchtower.org
+# Scientology (признана деструктивной в РФ)
+full:scientology.ru
+full:scientology.com
+
+# ── ADS & TRACKERS ────────────────────────────────────────────
+# Major ad networks
+doubleclick.net
+googleadservices.com
+googlesyndication.com
+google-analytics.com
+googletagmanager.com
+googletagservices.com
+adnxs.com
+adsystem.amazon.com
+advertising.com
+adtech.com
+openx.net
+pubmatic.com
+rubiconproject.com
+criteo.com
+criteo.net
+moatads.com
+ib.adnxs.com
+adsafeprotected.com
+cdn.doubleverify.com
+casalemedia.com
+contextweb.com
+lijit.com
+servedby.flashtalking.com
+media.net
+outbrain.com
+taboola.com
+revcontent.com
+zergnet.com
+exoclick.com
+trafficjunky.net
+juicyads.com
+# Russian ad networks
+begun.ru
+adriver.ru
+mail.ru.adriver.ru
+imradio.ru
+tns-counter.ru
+rambler.ru.adriver.ru
+# Trackers & analytics
+scorecardresearch.com
+quantserve.com
+chartbeat.com
+mouseflow.com
+fullstory.com
+hotjar.com
+crazyegg.com
+segment.com
+mixpanel.com
+amplitude.com
+appsflyer.com
+adjust.com
+branch.io
+kochava.com
+singular.net
+
+# ── TORRENT TRACKERS ──────────────────────────────────────────
+thepiratebay.org
+thepiratebay.se
+piratebay.com
+kickasstorrents.to
+kickasstorrents.cr
+kat.cr
+1337x.to
+1337x.st
+rarbg.to
+rutracker.org
+nnmclub.to
+nnm-club.me
+kinozal.tv
+rutor.info
+megashara.com
+tapochek.net
+tfile.me
+animelayer.ru
+anidub.com
+pornolab.net
+torrentino.me
+trackers.nnmclub.to
+opentrackr.org
+tracker.openbittorrent.com
+tracker.pirateparty.gr
+
+# ── PHISHING & MALWARE ────────────────────────────────────────
+# OISD covers this - referenced from geosite separately
