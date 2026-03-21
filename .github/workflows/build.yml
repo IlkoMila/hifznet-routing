@@ -32,18 +32,12 @@ jobs:
           cd ..
           mv dlc.dat geosite.dat
           sha256sum geosite.dat > geosite.dat.sha256sum
-          echo "geosite.dat size:"
           ls -lh geosite.dat
 
-      - name: Build geoip.dat
+      - name: Download geoip.dat from v2fly
         run: |
-          git clone https://github.com/v2fly/geoip.git builder-ip
-          cd builder-ip
-          go run ./cmd/community/main.go --configFile=./config.json
-          cp output/dat/geoip.dat ../geoip.dat
-          cd ..
+          wget -O geoip.dat https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
           sha256sum geoip.dat > geoip.dat.sha256sum
-          echo "geoip.dat size:"
           ls -lh geoip.dat
 
       - name: Create Release
@@ -57,9 +51,9 @@ jobs:
             geoip.dat
             geoip.dat.sha256sum
           body: |
-            Auto-built from HifzNet routing rules.
-            geosite: hifznet (direct) + hifznet-block (blocked)
-            geoip: full country database (RU direct, rest via VPN)
+            HifzNet routing files - auto built.
+            geosite.dat: hifznet (RU direct) + hifznet-block (blocked)
+            geoip.dat: v2fly latest (monthly updated)
             Commit: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
