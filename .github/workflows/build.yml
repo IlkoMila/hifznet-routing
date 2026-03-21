@@ -1,4 +1,4 @@
-name: Build geosite.dat
+name: Build geosite.dat and geoip.dat
 
 on:
   push:
@@ -24,16 +24,27 @@ jobs:
 
       - name: Build geosite.dat
         run: |
-          git clone https://github.com/v2fly/domain-list-community.git builder
-          cp data/hifznet builder/data/hifznet
-          cp data/hifznet-block builder/data/hifznet-block
-          cd builder
+          git clone https://github.com/v2fly/domain-list-community.git builder-site
+          cp data/hifznet builder-site/data/hifznet
+          cp data/hifznet-block builder-site/data/hifznet-block
+          cd builder-site
           go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet,hifznet-block
           cd ..
           mv dlc.dat geosite.dat
           sha256sum geosite.dat > geosite.dat.sha256sum
-          echo "Built geosite.dat:"
+          echo "geosite.dat size:"
           ls -lh geosite.dat
+
+      - name: Build geoip.dat
+        run: |
+          git clone https://github.com/v2fly/geoip.git builder-ip
+          cd builder-ip
+          go run ./cmd/community/main.go --configFile=./config.json
+          cp output/dat/geoip.dat ../geoip.dat
+          cd ..
+          sha256sum geoip.dat > geoip.dat.sha256sum
+          echo "geoip.dat size:"
+          ls -lh geoip.dat
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -43,8 +54,12 @@ jobs:
           files: |
             geosite.dat
             geosite.dat.sha256sum
+            geoip.dat
+            geoip.dat.sha256sum
           body: |
-            Auto-built geosite.dat with hifznet + hifznet-block categories.
-            Contains ${{ github.sha }}
+            Auto-built from HifzNet routing rules.
+            geosite: hifznet (direct) + hifznet-block (blocked)
+            geoip: full country database (RU direct, rest via VPN)
+            Commit: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
