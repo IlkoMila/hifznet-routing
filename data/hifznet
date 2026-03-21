@@ -1,338 +1,155 @@
 # HifzNet - Russia Direct Access List
-# Auto-built from v2fly/domain-list-community + manual additions
-# Last updated: 2026-03-21
+# FIXED: domain: prefix instead of full: catches ALL subdomains
+# domain:ru catches ALL *.ru domains automatically
+# Last updated: 2026-03-22
 
-# ── GOVERNMENT & PUBLIC SERVICES ──────────────────────────────
-# Federal
-full:gosuslugi.ru
-full:gu-st.ru
-full:government.ru
-gov.ru
-full:kremlin.ru
-full:mil.ru
-full:cbr.ru
-full:cikrf.ru
-full:ebs.ru
-full:goskey.ru
-full:grfc.ru
-full:izbirkom.ru
-full:nalog.ru
-full:lkfl2.nalog.ru
-full:lknpd.nalog.ru
-full:rkn.gov.ru
-full:eais.rkn.gov.ru
-emias.info
-mgfoms.ru
-edu.ru
-# Moscow & region
-full:mos.ru
-full:mosreg.ru
-full:pgu.mos.ru
-full:uslugi.mosreg.ru
-full:transport.mos.ru
-# St. Petersburg
-spb.ru
-# Other regions
-sevastopol.ru
-sev.ru
-adygeya.ru
-bashkiria.ru
-buryatia.ru
-chuvashia.ru
-crimea.ru
-dagestan.ru
-grozny.ru
-izhevsk.ru
-kalmykia.ru
-karelia.ru
-kazan.ru
-tatarstan.ru
-tuva.ru
-udmurtia.ru
-yakutia.ru
-altai.ru
-kamchatka.ru
-khabarovsk.ru
-krasnoyarsk.ru
-krasnodar.su
-kuban.ru
-perm.ru
-stavropol.ru
-vladivostok.ru
-vl.ru
-arkhangelsk.ru
-astrakhan.ru
-belgorod.ru
-bryansk.ru
-chelyabinsk.ru
-irk.ru
-irkutsk.ru
-ivanovo.ru
-kaluga.ru
-kemerovo.ru
-kirov.ru
-kostroma.ru
-kursk.ru
-lipetsk.ru
-magadan.ru
-murmansk.ru
-nn.ru
-novosibirsk.ru
-nsk.ru
-omsk.ru
-penza.ru
-psk.ru
-pskov.ru
-rnd.ru
-ryazan.ru
-sakhalin.ru
-samara.ru
-saratov.ru
-smolensk.ru
-tambov.ru
-tomsk.ru
-tula.ru
-tver.ru
-tyumen.ru
-vladimir.ru
-volgograd.ru
-vologda.ru
-voronezh.ru
-yaroslavl.ru
-chukotka.ru
-jamal.ru
-yamal.ru
-surgut.ru
+# ── CATCH-ALL RU ZONES ────────────────────────────────────────
+# This single block covers 99% of Russian domains including
+# CDN, API, mobile app backends, new domains, subdomains
+domain:ru
+domain:su
+domain:xn--p1ai
 
-# ── VK ECOSYSTEM ──────────────────────────────────────────────
-vk.com
-vk.ru
-vkontakte.ru
-vk.me
-vkvideo.ru
-vkmusic.ru
-vk-apps.com
-vk-apps.ru
-vk-cdn.net
-vk-cdn.me
-vk.cc
-vk.link
-vkcloud-static.ru
-cdn-vk.ru
-userapi.com
-vkuservideo.ru
-vkuservideo.net
-vkuservideo.com
-vkuseraudio.net
-vkuseraudio.com
-vkuseraudio.ru
-vkuserphoto.ru
-vkuserlive.net
-vkusercdn.ru
-vkcache.com
-vkgo.app
-vklive.app
-vkmessenger.app
-vkmessenger.com
-vkuser.net
-mvk.com
-mradx.net
+# ── VK FULL INFRASTRUCTURE ───────────────────────────────────
+# CDN and API (NOT covered by .ru zone)
+domain:userapi.com
+domain:vkuservideo.net
+domain:vkuservideo.com
+domain:vkuseraudio.net
+domain:vkuseraudio.com
+domain:vkuserphoto.ru
+domain:vkuserlive.net
+domain:vkusercdn.ru
+domain:vk-cdn.net
+domain:vk-cdn.me
+domain:cdn-vk.ru
+domain:vkcache.com
+domain:mradx.net
+domain:mvk.com
+domain:vk-apps.com
+domain:vkontakte.ru
+domain:vk.com
+domain:vk.ru
+domain:vkvideo.ru
+domain:vkmusic.ru
+domain:ok.ru
+domain:okcdn.ru
+domain:mycdn.me
+domain:boosty.to
+domain:donationalerts.com
 
-# ── OK.RU ──────────────────────────────────────────────────────
-ok.ru
-okcdn.ru
-mycdn.me
-
-# ── MAIL.RU ───────────────────────────────────────────────────
-mail.ru
-imgsmail.ru
-
-# ── MAILRU GROUP EXTRA ────────────────────────────────────────
-boosty.to
-donationalerts.com
-max.ru
-youla.ru
-tamtam.chat
-
-# ── YANDEX ────────────────────────────────────────────────────
-yandex.ru
-yandex.com
-yandex.net
-yandex.by
-yandex.kz
-yandex.uz
-yandex.cloud
-ya.ru
-yastatic.net
-yastatic-net.ru
-yastat.net
-yandexcloud.net
-yandexmetrica.com
-yandexwebcache.net
-yandex-team.ru
-yandex-bank.net
-adfox.ru
-admetrica.ru
-turbopages.org
-webvisor.com
-webvisor.org
-naydex.net
-dzen.ru
-dzeninfra.ru
-kinopoisk.ru
+# ── YANDEX FULL INFRASTRUCTURE ───────────────────────────────
+# .ru zone catches yandex.ru, but these are NOT .ru
+domain:yandex.com
+domain:yandex.net
+domain:yandex.by
+domain:yandex.kz
+domain:yandex.uz
+domain:yandex.cloud
+domain:ya.ru
+domain:yastatic.net
+domain:yastatic-net.ru
+domain:yastat.net
+domain:yandexcloud.net
+domain:yandexmetrica.com
+domain:yandexwebcache.net
+domain:yandex-team.ru
+domain:adfox.ru
+domain:admetrica.ru
+domain:turbopages.org
+domain:webvisor.com
+domain:webvisor.org
+domain:naydex.net
+domain:dzen.ru
+domain:dzeninfra.ru
+domain:kinopoisk.ru
 full:kinopoisk-ru.clstorage.net
-full:arenda.yandex.ru
-full:taxi.yandex.ru
+full:yandex-images.clstorage.net
+full:yandex-pogoda.static-storage.net
 
-# ── BANKS & FINANCE ───────────────────────────────────────────
-sberbank.ru
-sber.ru
-sberbank.com
-alfabank.ru
-tinkoff.ru
-tbank.ru
-cdn-tinkoff.ru
-tbank-online.com
-vtb.ru
-gazprombank.ru
-gpb.ru
-psbank.ru
-rosbank.ru
-bankline.ru
-rshb.ru
-abr.ru
-tochka.com
-tochka-tech.com
-mtsdengi.ru
-banki.ru
-finuslugi.ru
-moex.com
-spvb.ru
-mirpayonline.ru
-nspk.ru
-credistory.ru
-nbki.ru
-sistema-capital.com
-full:bilet.nspk.ru
+# ── MAIL.RU GROUP ─────────────────────────────────────────────
+domain:mail.ru
+domain:imgsmail.ru
+domain:max.ru
+domain:youla.ru
+domain:tamtam.chat
 
-# ── ECOMMERCE ─────────────────────────────────────────────────
-ozon.ru
-ozone.ru
-ozonusercontent.com
-wildberries.ru
-wb.ru
-wbpay.ru
-paywb.com
-rwb.ru
-geobasket.ru
-wibes.ru
-wb-basket.ru
-wbbasket.ru
-avito.ru
-avito.st
-2gis.ru
-cian.ru
-hh.ru
+# ── SBER ECOSYSTEM ───────────────────────────────────────────
+domain:sberbank.com
+domain:sber.ru
 
-# ── RETAIL ────────────────────────────────────────────────────
-magnit.ru
-perekrestok.ru
-5ka.ru
-vkusvill.ru
-dodopizza.ru
-dodois.com
-auchan.ru
-detmir.ru
-dixy.ru
-fix-price.com
-lenta.com
-metro-cc.ru
-krasnoeibeloe.ru
-rostics.ru
-myspar.ru
-vkusnoitochka.ru
-x5.ru
+# ── WILDBERRIES FULL ─────────────────────────────────────────
+domain:wb.ru
+domain:wbpay.ru
+domain:paywb.com
+domain:rwb.ru
+domain:geobasket.ru
+domain:wibes.ru
+domain:wildberries.com
 
-# ── STREAMING & ENTERTAINMENT ─────────────────────────────────
-rutube.ru
-rutubelist.ru
-rtbcdn.ru
-ivi.ru
-okko.tv
-okko.sport
-wink.ru
-restream-media.net
-amediateka.ru
-premier.one
-start.ru
-tvigle.ru
-kinorium.com
-cdnvideo.ru
-trbcdn.net
-24h.tv
-smotreshka.tv
-viju.ru
+# ── OZON FULL ────────────────────────────────────────────────
+domain:ozone.ru
+domain:ozonusercontent.com
 
-# ── TRAVEL & TRANSPORT ────────────────────────────────────────
-rzd.ru
-rzd-bonus.ru
-tutu.ru
-aviasales.ru
-aviasales.com
-avs.io
-blablacar.ru
-ostrovok.ru
-avtovokzaly.ru
-mosmetro.ru
-mosmetro.tech
-full:metro.spb.ru
-full:podorozhnik.spb.ru
-gorodpay.ru
-rrtp.ru
-sbertroika.ru
-otello.ru
+# ── AVITO ────────────────────────────────────────────────────
+domain:avito.st
 
-# ── TELECOM ───────────────────────────────────────────────────
-beeline.ru
-dom.ru
-megafon.ru
-mts.ru
-mymts.ru
-rostelecom.ru
-rt.ru
-t2.ru
-tele2.ru
-yota.ru
+# ── BANKING (non-.ru domains) ────────────────────────────────
+domain:tbank.ru
+domain:cdn-tinkoff.ru
+domain:tbank-online.com
+domain:tochka.com
+domain:tochka-tech.com
+domain:vtb.ru
+domain:rosbank.ru
+domain:bankline.ru
 
-# ── IT MEDIA ──────────────────────────────────────────────────
-habr.com
-dtf.ru
-vc.ru
+# ── RETAIL (non-.ru domains) ─────────────────────────────────
+domain:fix-price.com
+domain:dodois.com
+domain:dodois.io
+domain:dodopizza.com
+domain:dodostatic.net
 
-# ── NEWS ──────────────────────────────────────────────────────
-lenta.ru
-rbc.ru
-kommersant.ru
-vedomosti.ru
-ria.ru
-tass.ru
-rg.ru
-mk.ru
-kp.ru
-aif.ru
+# ── X5 GROUP ─────────────────────────────────────────────────
+domain:perekrestok.com
+domain:x5.ai
+domain:x5.com
+domain:x5.digital
+domain:x5.group
+domain:x5.media
+domain:x5.team
+domain:x5.tech
+domain:x5static.net
 
-# ── OTHER RUSSIAN SERVICES ───────────────────────────────────
-litres.ru
-pochta.ru
-rustore.ru
-gazfond-pn.ru
-meteoinfo.ru
-ngenix.net
-qms.ru
-t1.cloud
-taxsee.com
-yclients.com
-netmonet.co
-tips.tips
-ru.com
-ru.net
+# ── STREAMING (non-.ru) ──────────────────────────────────────
+domain:rutubelist.ru
+domain:rtbcdn.ru
+domain:restream-media.net
+domain:okko.sport
+domain:okko.tv
+domain:playfamily.ru
+domain:cdnvideo.ru
+domain:trbcdn.net
+
+# ── TRAVEL (non-.ru) ─────────────────────────────────────────
+domain:aviasales.com
+domain:avs.io
+domain:blablacar.ru
+domain:ostrovok.ru
+
+# ── TELECOM (non-.ru) ────────────────────────────────────────
+domain:mymts.ru
+domain:t2.ru
+
+# ── OTHER NON-.RU ────────────────────────────────────────────
+domain:taxsee.com
+domain:yclients.com
+domain:netmonet.co
+domain:tips.tips
+domain:ru.com
+domain:ru.net
+domain:ngenix.net
+domain:sistema-capital.com
+domain:moex.com
+domain:spvb.ru
