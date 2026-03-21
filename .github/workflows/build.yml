@@ -1,0 +1,49 @@
+name: Build geosite.dat
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/**'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Build geosite.dat
+        run: |
+          git clone https://github.com/v2fly/domain-list-community.git builder
+          cp data/hifznet builder/data/hifznet
+          cd builder
+          go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet
+          cd ..
+          mv dlc.dat geosite.dat
+          sha256sum geosite.dat > geosite.dat.sha256sum
+          echo "Built geosite.dat:"
+          ls -lh geosite.dat
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Build
+          files: |
+            geosite.dat
+            geosite.dat.sha256sum
+          body: |
+            Auto-built geosite.dat with hifznet category.
+            Contains ${{ github.sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
