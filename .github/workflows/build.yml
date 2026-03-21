@@ -26,8 +26,9 @@ jobs:
         run: |
           git clone https://github.com/v2fly/domain-list-community.git builder
           cp data/hifznet builder/data/hifznet
+          cp data/hifznet-block builder/data/hifznet-block
           cd builder
-          go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet
+          go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet,hifznet-block
           cd ..
           mv dlc.dat geosite.dat
           sha256sum geosite.dat > geosite.dat.sha256sum
@@ -43,7 +44,7 @@ jobs:
             geosite.dat
             geosite.dat.sha256sum
           body: |
-            Auto-built geosite.dat with hifznet category.
+            Auto-built geosite.dat with hifznet + hifznet-block categories.
             Contains ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
