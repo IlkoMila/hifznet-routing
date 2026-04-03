@@ -1,5 +1,4 @@
 name: Build geosite.dat and geoip.dat
-
 on:
   push:
     branches:
@@ -10,7 +9,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 3 * * 1'
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +34,7 @@ jobs:
           mv dlc.dat geosite.dat
           sha256sum geosite.dat > geosite.dat.sha256sum
           ls -lh geosite.dat
-    
+
       - name: Fetch IP ranges from RIPE by ASN
         run: |
           mkdir -p tmp-geoip
@@ -89,17 +87,15 @@ jobs:
             geoip.dat.sha256sum
           body: |
             HifzNet routing files - auto built.
-
             **geosite.dat** categories:
-            - `geosite:hifznet` â Russian domains + foreign RU service infrastructure (direct)
-            - `geosite:hifznet-block` â strict block: extremism + terrorism + torrents
-            - `geosite:hifznet-ads-block` â optional block: ads, trackers, analytics
-
+            - `geosite:hifznet` - Russian domains + foreign RU service infrastructure (direct)
+            - `geosite:hifznet-block` - strict block: extremism + terrorism + torrents
+            - `geosite:hifznet-ads-block` - optional block: ads, trackers, analytics
+            - `geosite:geolocation-ru` - standard v2fly Russian domains list
             **geoip.dat** categories:
-            - `geoip:ru` â standard Russian IP ranges
-            - `geoip:private` â local/private networks
-            - `geoip:hifznet-direct` â foreign IPs of Yandex/VK/Sber/Ozon/WB by ASN
-
+            - `geoip:ru` - standard Russian IP ranges
+            - `geoip:private` - local/private networks
+            - `geoip:hifznet-direct` - foreign IPs of Yandex/VK/Sber/Ozon/WB by ASN
             Commit: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
