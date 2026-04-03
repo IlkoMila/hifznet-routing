@@ -25,18 +25,18 @@ jobs:
 
       - name: Build geosite.dat
         run: |
-          git clone https://github.com/v2fly/domain-list-community.git builder-site
-          cp data/hifznet builder-site/data/hifznet
-          cp data/hifznet-block builder-site/data/hifznet-block
-          cp data/hifznet-ads-block builder-site/data/hifznet-ads-block
-          cp data/win-spy builder-site/data/win-spy
-          cd builder-site
-          go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet,hifznet-block,hifznet-ads-block,win-spy
-          cd ..
-          mv dlc.dat geosite.dat
-          sha256sum geosite.dat > geosite.dat.sha256sum
-          ls -lh geosite.dat
-
+        git clone https://github.com/v2fly/domain-list-community.git builder-site
+        cp data/hifznet builder-site/data/hifznet
+        cp data/hifznet-block builder-site/data/hifznet-block
+        cp data/hifznet-ads-block builder-site/data/hifznet-ads-block
+        cp data/win-spy builder-site/data/win-spy
+        cd builder-site
+        go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet,hifznet-block,hifznet-ads-block,win-spy,geolocation-ru
+        cd ..
+        mv dlc.dat geosite.dat
+        sha256sum geosite.dat > geosite.dat.sha256sum
+        ls -lh geosite.dat
+    
       - name: Fetch IP ranges from RIPE by ASN
         run: |
           mkdir -p tmp-geoip
