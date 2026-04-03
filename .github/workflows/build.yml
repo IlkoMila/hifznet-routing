@@ -27,7 +27,6 @@ jobs:
           cp data/hifznet builder-site/data/hifznet
           cp data/hifznet-block builder-site/data/hifznet-block
           cp data/hifznet-ads-block builder-site/data/hifznet-ads-block
-          cp data/win-spy builder-site/data/win-spy
           cd builder-site
           go run ./ --outputdir=../ --datapath=./data --exportlists=hifznet,hifznet-block,hifznet-ads-block,geolocation-ru
           cd ..
